@@ -1,0 +1,16 @@
+.app {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+}
+
+.presentation {
+  width: min(100%, 640px);
+  text-align: center;
+}
+
+.presentation p {
+  margin: 12px 0 0;
+}

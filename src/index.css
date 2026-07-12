@@ -1,0 +1,36 @@
+:root {
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  font: 18px/145% var(--sans);
+  color: #263238;
+  background: #f6f8fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  box-sizing: border-box;
+  min-height: 100svh;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+h1 {
+  margin: 0;
+  color: #111827;
+  font-size: clamp(2rem, 7vw, 4rem);
+  line-height: 1.1;
+}
+
+p {
+  margin: 0;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
