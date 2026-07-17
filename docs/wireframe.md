@@ -2,11 +2,7 @@
 
 ## 1. Estado del documento
 
-Este documento describe el diseño aprobado para la pantalla principal de DevData Generator.
-
-El wireframe representa una propuesta de interfaz.
-
-No significa que la pantalla, los controles o las funcionalidades se encuentren implementados en el repositorio.
+Este documento recoge el diseño aprobado para la pantalla principal de DevData Generator. Servirá como guía cuando se construya la interfaz; los controles y las funcionalidades representados todavía no están implementados.
 
 ## 2. Objetivo del diseño
 
@@ -293,7 +289,9 @@ Posibles soluciones:
 
 La decisión final corresponde a la implementación.
 
-## 7. Diseño responsive previsto
+## 7. Diseño responsive futuro
+
+La adaptación responsive es un objetivo de la Sesión 3 y de la versión final, no una funcionalidad ya implementada.
 
 ### Escritorio
 
@@ -330,11 +328,10 @@ No se diseñará una experiencia móvil distinta. Se reorganizarán los mismos b
 * Sin navegación compleja.
 * Sin copiar literalmente otras herramientas.
 
-## 9. Aspectos aplazados
+## 9. Trabajo posterior
 
-No forman parte del wireframe inicial:
+El modo oscuro y la accesibilidad son objetivos oficiales de la Sesión 3. Además, quedan fuera del wireframe inicial estas ideas opcionales:
 
-* modo oscuro;
 * seed;
 * relaciones;
 * Excel;

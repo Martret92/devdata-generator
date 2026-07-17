@@ -47,17 +47,17 @@ La primera versión se orienta especialmente a usuarios que prefieran una herram
 
 ### Librerías previstas
 
-Las siguientes librerías están previstas para las siguientes sesiones, pero todavía no forman parte de la implementación actual:
+Se incorporarán cuando se desarrolle la funcionalidad que las necesita:
 
 - `@faker-js/faker`: generación de datos ficticios;
 - `papaparse`: conversión y exportación en CSV;
 - `file-saver`: descarga de archivos desde el navegador.
 
-> Estas librerías todavía no deben considerarse instaladas ni operativas. Su incorporación se realizará progresivamente cuando la funcionalidad correspondiente sea desarrollada y probada.
+Faker, PapaParse y FileSaver no se instalaron en la Sesión 1 porque todavía no eran necesarias. Por ahora no forman parte de la implementación.
 
-## Funcionalidades mínimas previstas
+## Funcionalidades principales
 
-El MVP deberá permitir:
+El núcleo del generador deberá permitir:
 
 - seleccionar una plantilla;
 - indicar la cantidad de registros;
@@ -65,11 +65,12 @@ El MVP deberá permitir:
 - generar datos ficticios;
 - mostrar una vista previa en tabla;
 - mostrar una vista previa en código;
-- exportar los resultados;
+- exportar JSON;
+- exportar CSV;
+- generar SQL INSERT;
 - validar la configuración antes de generar o exportar;
-- la interfaz responsive es un objetivo previsto para la versión final.
 
-Estas funcionalidades forman parte del alcance aprobado, pero no todas están implementadas actualmente.
+Estas funcionalidades están diseñadas, pero todavía no se han implementado. Responsive y accesibilidad son objetivos de la Sesión 3 y de la versión final.
 
 ## Plantillas iniciales
 
@@ -266,24 +267,22 @@ Objetivos previstos:
 * validaciones;
 * refactorización.
 
-### Sesión 3 — Exportación
+### Sesión 3 — Exportación y diseño
 
-**Estado: pendiente**
-
-Objetivos previstos:
+**Pendiente**
 
 * exportación JSON;
 * exportación CSV;
-* SQL INSERT;
-* descarga;
+* generación de SQL INSERT;
+* descarga de archivos;
 * copiar al portapapeles;
-* mejora de interfaz;
+* mejora de la interfaz;
 * responsive;
 * modo oscuro;
 * accesibilidad;
 * refactorización.
 
-### Sesión 4 — Versión final
+### Sesión 4 — Revisión y entrega
 
 **Estado: pendiente**
 
@@ -306,6 +305,16 @@ Primer commit del proyecto:
 43e7d43 chore: initialize React and Vite project
 ```
 
+Documentación de la Sesión 1:
+
+```text
+ab5e61b docs: document session 1 analysis and project roadmap
+```
+
+## Uso de IA
+
+La IA se utilizó como apoyo para analizar requisitos, ordenar la documentación y revisar cambios. El trabajo con Codex se dividió en tareas pequeñas: primero se inspeccionó el repositorio, después se aplicaron cambios acotados, se revisó el diff y finalmente se ejecutaron las pruebas. Las decisiones del proyecto y la comprobación del resultado siguieron siendo responsabilidad del autor. El [registro de prompts](docs/registro-prompts.md) distingue entre texto literal, resúmenes fieles y resultados consolidados.
+
 ## Contexto académico
 
 Proyecto realizado como práctica guiada de Desarrollo Web FullStack.
@@ -315,14 +324,10 @@ Proyecto realizado como práctica guiada de Desarrollo Web FullStack.
 * Autor: Jaime Martret
 * Fecha prevista de entrega final: 31 de julio de 2026
 
+## Extras opcionales
+
+Fuera del calendario oficial quedan ideas como seed, relaciones, Excel, importación, API REST, estructuras anidadas, creación libre de plantillas, historial, edición avanzada y filtros avanzados. No están implementadas ni forman parte del núcleo.
+
 ## Nota sobre el estado de la documentación
 
-Este README distingue entre:
-
-* funcionalidades previstas;
-* decisiones de diseño;
-* elementos implementados;
-* validaciones realizadas;
-* trabajo pendiente.
-
-Una funcionalidad solo se marcará como terminada cuando haya sido implementada y probada en el repositorio.
+La documentación separa diseño, implementación y trabajo pendiente. Una funcionalidad solo se marcará como terminada después de implementarla y probarla.

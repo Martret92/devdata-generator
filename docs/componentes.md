@@ -2,9 +2,7 @@
 
 ## 1. Propósito
 
-Este documento define una propuesta inicial para dividir la interfaz de DevData Generator en componentes React.
-
-La arquitectura tiene carácter orientativo.
+Este documento propone cómo dividir la interfaz de DevData Generator en componentes React. El árbol servirá como guía durante el desarrollo, no como una lista de archivos que haya que crear de inmediato.
 
 No obliga a:
 
@@ -13,7 +11,7 @@ No obliga a:
 - separar elementos que solo contengan unas pocas líneas;
 - utilizar esta estructura sin cambios durante todo el proyecto.
 
-Los componentes deberán crearse progresivamente cuando exista una responsabilidad real y reutilizable.
+Los componentes se crearán progresivamente cuando exista una responsabilidad real y reutilizable. No deben prepararse componentes vacíos.
 
 ## 2. Árbol aprobado
 
@@ -48,7 +46,7 @@ La estructura busca:
 * permitir crecimiento progresivo;
 * evitar sobrearquitectura.
 
-No se incluye un `Sidebar` porque, en el MVP, solo actuaría como contenedor visual de `GeneratorPanel`.
+Se descartó `Sidebar` porque, para este MVP, solo duplicaría el panel de configuración sin aportar otra navegación.
 
 No se crean componentes diferentes como `PreviewJSON`, `PreviewCSV` y `PreviewSQL` mientras una única vista `CodePreview` pueda representar el formato seleccionado.
 

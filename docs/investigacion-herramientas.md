@@ -8,7 +8,7 @@ Antes de diseñar DevData Generator se analizaron tres referencias:
 - JSON Generator;
 - Faker.js Playground.
 
-La investigación no busca copiar literalmente sus interfaces. Su objetivo es identificar:
+La comparación buscó ideas útiles, no una interfaz que copiar:
 
 - patrones útiles;
 - formas de organizar la configuración;
@@ -433,7 +433,7 @@ Faker no debe utilizarse como justificación para añadir durante el MVP todos s
 
 ## 6. Conclusión para DevData Generator
 
-La solución debe combinar aprendizajes de las tres referencias sin copiar ninguna literalmente.
+Cada referencia resuelve una parte distinta: Mockaroo inspira el flujo visual, JSON Generator la vista de código y Faker.js el motor de datos. DevData Generator combinará esos aprendizajes sin copiar ninguna interfaz.
 
 ### De Mockaroo
 

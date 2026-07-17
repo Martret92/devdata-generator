@@ -1,145 +1,37 @@
 # Registro de prompts
 
-## 1. Objetivo
+## Uso de IA en el proyecto
 
-Este documento registra los prompts relevantes utilizados para:
+La IA se utilizó como apoyo para analizar requisitos, ordenar la arquitectura, preparar documentación y revisar el trabajo. En el caso de Codex, el proceso se dividió en tareas pequeñas: inspección previa del repositorio, cambios acotados, revisión del diff y ejecución de pruebas.
 
-- analizar requisitos;
-- diseñar la aplicación;
-- preparar la arquitectura;
-- implementar funcionalidades;
-- revisar código;
-- realizar pruebas;
-- preparar documentación;
-- mantener la trazabilidad del proyecto.
+Este documento no reconstruye conversaciones que no se conservaron. Distingue entre:
 
-No se registrarán:
+- **texto literal**: contenido disponible palabra por palabra;
+- **resumen fiel**: síntesis identificada como tal;
+- **resultado consolidado**: decisión que terminó reflejada en el proyecto;
+- **texto no conservado**: contenido que no puede citarse ni recuperarse desde este registro.
 
-- saludos;
-- confirmaciones triviales;
-- mensajes sin impacto;
-- preguntas operativas menores.
+## A. Prompts iniciales de la Entrega 1
 
-## 2. Regla de veracidad
+El Paso 9 proponía tres preguntas de análisis sin pedir código:
 
-Cuando no se conserve el texto literal de un prompt o de su respuesta:
+1. ¿Cómo organizarías una aplicación React para generar datos ficticios?
+2. ¿Qué componentes reutilizables crearías?
+3. ¿Qué estructura tendría?
 
-- no se reconstruirá como si fuera una cita exacta;
-- se indicará que no consta literalmente;
-- se documentará únicamente su objetivo;
-- se conservará la decisión final consolidada;
-- se evitará atribuir cambios que no puedan comprobarse.
+> No guardamos una respuesta independiente para cada pregunta. Las respuestas se fueron concretando durante la sesión y quedaron reflejadas en el wireframe, el árbol de componentes y las decisiones de estado.
 
-## 3. Formato del registro
+### Organización de la aplicación
 
-| Campo | Descripción |
-|---|---|
-| Identificador | Código único del registro |
-| Fecha o sesión | Momento en el que se utilizó |
-| Conversación o herramienta | Lugar desde el que se realizó |
-| Prompt | Texto literal o resumen identificado como no literal |
-| Objetivo | Resultado que se buscaba |
-| Resultado | Respuesta útil o decisión obtenida |
-| Cambios aplicados | Archivos o decisiones afectados |
-| Validación | Comprobación posterior |
+Durante el análisis terminamos planteando una sola pantalla con tres zonas: configuración, resultados y exportación. El estado compartido partiría de `App` y los componentes se extraerían de forma progresiva.
 
-## 4. Registros iniciales
+### Componentes reutilizables
 
-### PROMPT-001
+A lo largo de la sesión se propusieron selectores de plantilla, cantidad y campos; controles de validación y generación; vistas de tabla y código; y componentes para la exportación. Se descartó `Sidebar` porque solo duplicaría el panel de configuración del MVP.
 
-**Fecha o sesión:** Sesión 1
-**Conversación o herramienta:** No consta
-**Texto disponible:** Literal
+### Estructura resultante
 
-> ¿Cómo organizarías una aplicación React para generar datos ficticios?
-
-**Objetivo:**
-
-Obtener una propuesta inicial de organización para una aplicación React dedicada a configurar, generar, previsualizar y exportar datos ficticios.
-
-**Resultado:**
-
-No consta la respuesta histórica literal.
-
-Las decisiones consolidadas posteriormente fueron:
-
-- utilizar una sola pantalla;
-- separar configuración, resultados y exportación;
-- mantener el flujo principal visible;
-- gestionar inicialmente el estado compartido desde `App`;
-- crear componentes de forma progresiva.
-
-**Cambios aplicados:**
-
-- wireframe aprobado;
-- árbol orientativo de componentes;
-- propuesta de distribución de estados.
-
-**Validación:**
-
-Las decisiones quedaron revisadas durante el cierre documental de la Entrega 1.
-
----
-
-### PROMPT-002
-
-**Fecha o sesión:** Sesión 1
-**Conversación o herramienta:** No consta
-**Texto disponible:** Literal
-
-> ¿Qué componentes reutilizables crearías?
-
-**Objetivo:**
-
-Identificar componentes React con responsabilidades diferenciadas y evitar que toda la aplicación quedara concentrada en `App`.
-
-**Resultado:**
-
-No consta la respuesta histórica literal.
-
-La decisión consolidada propone:
-
-- `TemplateSelector`;
-- `QuantitySelector`;
-- `FieldSelector`;
-- `GenerateButton`;
-- `PreviewTable`;
-- `CodePreview`;
-- componentes de exportación;
-- paneles para agrupar responsabilidades.
-
-**Cambios aplicados:**
-
-Se creó el árbol orientativo documentado en `docs/componentes.md`.
-
-**Validación:**
-
-La estructura fue revisada para:
-
-- evitar componentes duplicados;
-- evitar un `Sidebar` innecesario;
-- evitar componentes vacíos;
-- mantener crecimiento progresivo.
-
----
-
-### PROMPT-003
-
-**Fecha o sesión:** Sesión 1
-**Conversación o herramienta:** No consta
-**Texto disponible:** Literal
-
-> ¿Qué estructura tendría?
-
-**Objetivo:**
-
-Definir una posible jerarquía de componentes y la organización general del proyecto.
-
-**Resultado:**
-
-No consta la respuesta histórica literal.
-
-La estructura consolidada es:
+La estructura final quedó reflejada en este árbol:
 
 ```text
 App
@@ -160,260 +52,107 @@ App
 │   └── ExportButton
 └── Footer
 ```
-**Cambios aplicados:**
 
-* árbol orientativo;
-* responsabilidades documentadas;
-* flujo de datos definido;
-* separación entre estados compartidos y locales.
+Las decisiones se fueron concretando en el [wireframe](wireframe.md), la [arquitectura de componentes](componentes.md) y la distribución de estados. El árbol es una guía y no obliga a crear componentes vacíos.
 
-**Validación:**
+## B. Organización de las conversaciones del Project
 
-La propuesta se revisó para evitar sobrearquitectura y no obliga a crear componentes vacíos.
+El proyecto se ha dividido en varias conversaciones para no mezclar coordinación, desarrollo, cambios en el repositorio y documentación. Esta organización ayuda a repartir el trabajo, pero no forma parte de la arquitectura React.
 
-## 5. Prompts posteriores relevantes
+### DevData Generator · Main
 
-### PROMPT-004
+Es la conversación de coordinación. Se utiliza para:
 
-**Fecha o sesión:** Sesión 1
-**Conversación o herramienta:** DevData Generator · Ideación y requisitos
-**Texto disponible:** No se conserva aquí el texto literal completo.
+- mantener el estado general;
+- revisar requisitos;
+- decidir el siguiente paso;
+- aprobar los resultados;
+- preparar mensajes para las demás conversaciones;
+- comprobar que una tarea está realmente terminada.
 
-**Resumen fiel:**
+### DevData Generator · Desarrollo React
 
-Consolidar los requisitos ya contenidos en la conversación y en los documentos originales, sin abrir una fase nueva de ideación ni inventar requisitos.
+Se utiliza para analizar y validar el trabajo técnico. Sus tareas principales son:
 
-**Objetivo:**
+- inspeccionar el repositorio;
+- dividir el desarrollo en cambios pequeños;
+- revisar los cambios realizados por Codex;
+- ejecutar pruebas;
+- detectar errores;
+- comprobar que el código respeta el alcance aprobado.
 
-Preparar un traspaso fiable hacia DevData Generator · Main con:
+### DevData Generator · Codex
 
-* requisitos del profesor;
-* entregables;
-* funcionalidades obligatorias;
-* funcionalidades recomendadas;
-* decisiones aprobadas;
-* decisiones pendientes.
+Se utiliza para realizar cambios concretos sobre el repositorio. Antes de aceptar un cambio se revisan:
 
-**Resultado:**
+- los archivos modificados;
+- el diff;
+- lint;
+- build;
+- funcionamiento local;
+- estado de Git.
 
-Se consolidó el alcance inicial del proyecto y se separaron:
+### DevData Generator · Documentación y entrega
 
-* requisitos obligatorios;
-* recomendaciones;
-* extras;
-* elementos pendientes.
+Se encarga de:
 
-**Cambios aplicados:**
+- README;
+- documentos de cada sesión;
+- investigación;
+- wireframes;
+- árbol de componentes;
+- registro de prompts;
+- pruebas documentadas;
+- presentación final.
 
-* definición del alcance;
-* plantillas iniciales;
-* formatos obligatorios;
-* coordinación entre conversaciones.
+### DevData Generator · Ideación y requisitos
 
-**Validación:**
+Conserva el origen y el contexto del proyecto:
 
-El documento original del profesor se mantuvo como fuente oficial y fue entregado también a Main.
+- documento del profesor;
+- propuesta inicial;
+- requisitos obligatorios;
+- decisiones históricas;
+- ideas opcionales;
+- dudas que aparecieron al definir el alcance.
 
----
+Aunque se consulta menos durante la implementación, permite comprobar de dónde procede cada decisión.
 
-### PROMPT-005
+## C. Prompts posteriores relevantes
 
-**Fecha o sesión:** Sesión 1
-**Conversación o herramienta:** DevData Generator · Documentación y entrega
-**Texto disponible:** Disponible en la conversación, no reproducido íntegramente en este registro para evitar duplicación excesiva.
+Este apartado recoge una selección de prompts que tuvieron impacto directo en decisiones, entregables o cambios del repositorio. No es un historial completo de todos los mensajes ni de todas las conversaciones. Los textos siguientes son resúmenes, no citas literales.
 
-**Resumen fiel:**
+### PROMPT-004 — Consolidación de requisitos
 
-Preparar los entregables documentales completos de la Entrega 1, incluyendo:
+- **Conversación:** DevData Generator · Ideación y requisitos.
+- **Objetivo:** reunir los requisitos existentes sin inventar otros nuevos.
+- **Resultado:** se separaron requisitos obligatorios, recomendaciones, extras y decisiones pendientes.
+- **Comprobación:** el documento del profesor se mantuvo como fuente oficial.
 
-* investigación de herramientas;
-* problema y usuarios;
-* plantillas y campos;
-* wireframe;
-* árbol de componentes;
-* distribución de estados;
-* registro inicial de prompts;
-* paquete de cierre para Main.
+### PROMPT-005 — Preparación de la Entrega 1
 
-**Objetivo:**
+- **Conversación:** DevData Generator · Documentación y entrega.
+- **Objetivo:** preparar la investigación, las plantillas, los campos, el wireframe, los componentes y los primeros prompts.
+- **Resultado:** se creó el paquete documental de la Sesión 1.
+- **Comprobación:** Main revisó y aprobó el contenido.
 
-Cerrar documentalmente la Sesión 1 sin modificar el repositorio ni afirmar funcionalidades inexistentes.
+### PROMPT-006 — Preparación técnica inicial
 
-**Resultado:**
+- **Conversaciones:** DevData Generator · Desarrollo React y DevData Generator · Codex.
+- **Objetivo:** inspeccionar el repositorio, crear la base React con Vite y limpiar la plantilla inicial sin empezar el generador.
+- **Resultado:** se dejó una pantalla mínima y un proyecto preparado para comenzar la Sesión 2.
+- **Comprobación:** lint, build y servidor local superados.
 
-Se preparó:
+### PROMPT-007 — Incorporación de la documentación
 
-* comparación de Mockaroo, JSON Generator y Faker.js Playground;
-* definición del problema;
-* campos definitivos recomendados;
-* wireframe;
-* árbol del MVP;
-* distribución orientativa de estados;
-* registro inicial de prompts;
-* decisiones pendientes;
-* checklist de Entrega 1.
+- **Conversaciones:** DevData Generator · Main, DevData Generator · Codex y DevData Generator · Desarrollo React.
+- **Objetivo:** incorporar el README y los documentos de la Sesión 1 mediante un cambio exclusivamente documental.
+- **Resultado:** se publicaron el README y los cinco archivos de `docs/`.
+- **Comprobación:** diff revisado, lint y build superados, commit publicado y repositorio limpio.
 
-**Cambios aplicados:**
+### PROMPT-008 — Revisión editorial
 
-En ese momento no se modificó el repositorio.
-
-Las decisiones quedaron preparadas para su incorporación documental.
-
-**Validación:**
-
-Main confirmó que la Entrega 1 estaba completada y validada.
-
----
-
-### PROMPT-006
-
-**Fecha o sesión:** Sesión 1
-**Conversación o herramienta:** DevData Generator · Codex
-**Texto disponible:** No se reproduce aquí el texto literal completo.
-
-**Resumen fiel:**
-
-Inspeccionar el proyecto Vite existente antes de realizar cambios y sustituir la plantilla promocional por una pantalla mínima, manteniendo cambios pequeños y verificables.
-
-**Objetivo:**
-
-Preparar una base técnica limpia sin implementar todavía la lógica del generador.
-
-**Resultado comunicado:**
-
-Codex informó de:
-
-* inspección de la estructura Vite;
-* detección de logos, enlaces, contador y estilos promocionales;
-* sustitución por una estructura mínima;
-* simplificación de estilos;
-* eliminación de imports y recursos sin uso cuando correspondía.
-
-**Cambios aplicados:**
-
-Los detalles exactos deben comprobarse mediante el diff o el estado actual del repositorio antes de documentar archivos concretos.
-
-A nivel de resultado consolidado se considera confirmada una pantalla mínima inicial.
-
-**Validación:**
-
-Según el estado técnico comunicado:
-
-* ejecución local superada;
-* `npm run lint` superado;
-* `npm run build` superado.
-
-No se validaron funcionalidades del generador porque todavía no existían.
-
----
-
-### PROMPT-007
-
-**Fecha o sesión:** Cierre de Sesión 1
-**Conversación o herramienta:** DevData Generator · Documentación y entrega
-**Texto disponible:** Disponible en la conversación actual.
-
-**Resumen fiel:**
-
-Preparar una actualización documental incremental para sustituir el README estándar de Vite y añadir:
-
-* resumen de Sesión 1;
-* investigación;
-* wireframe;
-* arquitectura de componentes;
-* registro de prompts;
-* roadmap;
-* estado técnico real.
-
-**Objetivo:**
-
-Permitir que el profesor compruebe el trabajo realizado durante la primera sesión directamente desde el repositorio.
-
-**Resultado:**
-
-Se preparó el contenido completo para:
-
-```text
-README.md
-docs/sesion-1-analisis-diseno.md
-docs/investigacion-herramientas.md
-docs/wireframe.md
-docs/componentes.md
-docs/registro-prompts.md
-```
-
-**Cambios aplicados:**
-
-Ninguno desde esta conversación.
-
-Los archivos quedaron listos para ser incorporados por el flujo técnico correspondiente.
-
-**Validación:**
-
-Se contrastó antes de redactar:
-
-* que el repositorio es público;
-* que la rama principal es `main`;
-* que el README seguía siendo el de Vite;
-* que el commit inicial existe;
-* que `package.json` contiene los scripts esperados;
-* que Faker, Papa Parse y FileSaver todavía no están declarados como dependencias.
-
-## 6. Plantilla para registros futuros
-
-```text
-### PROMPT-XXX
-
-**Fecha o sesión:**
-**Conversación o herramienta:**
-**Texto disponible:** Literal / Resumen / No consta
-
-> Texto literal, cuando esté disponible.
-
-**Objetivo:**
-
-Descripción del propósito.
-
-**Resultado:**
-
-Decisión o información obtenida.
-
-**Cambios aplicados:**
-
-- archivo;
-- funcionalidad;
-- decisión;
-- ninguno.
-
-**Validación:**
-
-- prueba ejecutada;
-- revisión;
-- resultado;
-- pendiente.
-```
-
-## 7. Criterios para próximas sesiones
-
-En las siguientes sesiones deberán registrarse especialmente los prompts usados para:
-
-* instalar Faker;
-* definir las plantillas en código;
-* implementar selección de campos;
-* implementar generación;
-* crear la tabla;
-* crear la vista de código;
-* implementar exportaciones;
-* corregir errores;
-* refactorizar;
-* preparar pruebas;
-* revisar README;
-* preparar presentación.
-
-Cada registro deberá distinguir entre:
-
-* propuesta;
-* cambio aplicado;
-* validación;
-* limitación;
-* tarea pendiente.
+- **Conversaciones:** DevData Generator · Main, DevData Generator · Documentación y entrega, DevData Generator · Codex y DevData Generator · Desarrollo React.
+- **Objetivo:** reducir repeticiones, usar un tono más natural y corregir la explicación del Paso 9.
+- **Resultado:** se preparó una versión más breve y clara de los seis documentos.
+- **Comprobación:** revisión editorial en Main y validación técnica antes del commit.

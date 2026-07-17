@@ -104,9 +104,9 @@ El MVP deberá permitir:
 8. Exportar los mismos datos en CSV.
 9. Exportar los mismos datos como SQL INSERT.
 10. Mostrar validaciones cuando la configuración no sea correcta.
-11. Adaptar la interfaz a diferentes tamaños de pantalla.
-
 Durante la Sesión 1 estas funcionalidades quedaron diseñadas, pero no fueron implementadas.
+
+Responsive y accesibilidad se trabajarán más adelante como objetivos de interfaz de la Sesión 3 y de la versión final, no como funciones mínimas del núcleo.
 
 ## 8. Plantillas aprobadas
 
@@ -245,23 +245,25 @@ Estos estados son una guía de diseño y no representan una implementación exis
 
 Los detalles finales podrán adaptarse durante el desarrollo para evitar estado duplicado o innecesario.
 
-## 13. Primeros prompts
+## 13. Paso 9: preguntas de análisis
 
-Los primeros prompts que deben quedar registrados son:
+El profesor propuso tres preguntas de análisis sin pedir código:
 
 1. ¿Cómo organizarías una aplicación React para generar datos ficticios?
 2. ¿Qué componentes reutilizables crearías?
 3. ¿Qué estructura tendría?
 
-No se conserva la respuesta histórica literal obtenida para cada prompt.
+> No guardamos una respuesta independiente para cada pregunta. Las respuestas se fueron concretando durante la sesión y quedaron reflejadas en el wireframe, el árbol de componentes y las decisiones de estado.
 
-Por veracidad documental, solo se registran las decisiones consolidadas posteriormente:
+Durante el análisis terminamos planteando:
 
 * una pantalla principal;
 * separación entre configuración, vista previa y exportación;
 * componentes reutilizables;
 * estado compartido gestionado inicialmente desde `App`;
 * arquitectura pequeña y progresiva.
+
+El Paso 9 no exigía guardar respuestas literales, mantener una respuesta separada por pregunta ni conservar todo el historial posterior de conversaciones con IA.
 
 El registro completo se encuentra en:
 
@@ -360,6 +362,7 @@ Durante la Sesión 1 se adoptaron las siguientes decisiones:
 * limitar el MVP a tres plantillas;
 * utilizar JSON, CSV y SQL INSERT como formatos obligatorios;
 * reservar Faker.js como motor de generación;
+* instalar Faker, PapaParse y FileSaver solo cuando fueran necesarios en sesiones posteriores;
 * no exigir al usuario escribir código;
 * mostrar tabla y código a partir del mismo conjunto de datos;
 * no regenerar datos simplemente por cambiar el formato;
@@ -367,6 +370,8 @@ Durante la Sesión 1 se adoptaron las siguientes decisiones:
 * crear componentes de forma progresiva;
 * evitar duplicación y sobrearquitectura;
 * documentar la evolución desde la primera sesión.
+
+También se descartó `Sidebar`: en este MVP duplicaría el panel de configuración sin aportar una navegación distinta.
 
 ## 18. Elementos aplazados
 
