@@ -1,4 +1,6 @@
-function GenerationResult({ generatedData }) {
+import PreviewTable from './PreviewTable'
+
+function GenerationResult({ generatedData, columns }) {
   if (generatedData.length === 0) {
     return null
   }
@@ -8,8 +10,7 @@ function GenerationResult({ generatedData }) {
       <h2 id="result-title">
         {generatedData.length} registros generados correctamente.
       </h2>
-      <h3>Vista previa del primer registro</h3>
-      <pre>{JSON.stringify(generatedData[0], null, 2)}</pre>
+      <PreviewTable columns={columns} rows={generatedData} />
     </section>
   )
 }

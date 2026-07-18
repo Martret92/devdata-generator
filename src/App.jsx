@@ -47,6 +47,9 @@ function App() {
   const currentTemplate = templates.find(
     (template) => template.id === selectedTemplate,
   )
+  const previewColumns = currentTemplate.fields.filter((field) =>
+    selectedFields.includes(field.id),
+  )
 
   const handleTemplateChange = (templateId) => {
     const newTemplate = templates.find((template) => template.id === templateId)
@@ -120,7 +123,10 @@ function App() {
           <ValidationMessage errors={visibleErrors} />
           <GenerateButton />
         </GeneratorPanel>
-        <GenerationResult generatedData={generatedData} />
+        <GenerationResult
+          generatedData={generatedData}
+          columns={previewColumns}
+        />
       </div>
     </main>
   )
