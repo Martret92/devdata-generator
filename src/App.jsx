@@ -1,11 +1,36 @@
 import { useState } from 'react'
 import './App.css'
 import FieldSelector from './components/FieldSelector'
+import GenerateButton from './components/GenerateButton'
 import GeneratorPanel from './components/GeneratorPanel'
 import Header from './components/Header'
 import QuantitySelector from './components/QuantitySelector'
 import TemplateSelector from './components/TemplateSelector'
+import ValidationMessage from './components/ValidationMessage'
 import { templates } from './data/templates'
+
+function getConfigurationErrors(numberRecords, selectedFields) {
+  let quantityError = ''
+
+  if (numberRecords === '') {
+    quantityError = 'Indica la cantidad de registros.'
+  } else if (!Number.isFinite(numberRecords) || !Number.isInteger(numberRecords)) {
+    quantityError = 'La cantidad debe ser un número entero.'
+  } else if (numberRecords < 1) {
+    quantityError = 'La cantidad debe ser de al menos 1 registro.'
+  } else if (numberRecords > 100) {
+    quantityError = 'La cantidad no puede superar 100 registros.'
+  }
+
+  const fieldError =
+    selectedFields.length === 0 ? 'Selecciona al menos un campo.' : ''
+
+  return {
+    quantityError,
+    fieldError,
+    errors: [quantityError, fieldError].filter(Boolean),
+  }
+}
 
 function App() {
   const initialTemplate = templates[0]
@@ -14,6 +39,7 @@ function App() {
     initialTemplate.fields.map((field) => field.id),
   )
   const [numberRecords, setNumberRecords] = useState(10)
+  const [hasAttemptedGenerate, setHasAttemptedGenerate] = useState(false)
 
   const currentTemplate = templates.find(
     (template) => template.id === selectedTemplate,
@@ -34,11 +60,29 @@ function App() {
     )
   }
 
+  const { quantityError, fieldError, errors } = getConfigurationErrors(
+    numberRecords,
+    selectedFields,
+  )
+  const isConfigurationValid = errors.length === 0
+  const visibleErrors = hasAttemptedGenerate ? errors : []
+
+  const handleGenerate = (event) => {
+    event.preventDefault()
+    setHasAttemptedGenerate(true)
+
+    if (!isConfigurationValid) {
+      return
+    }
+
+    // La generación real se añadirá en el siguiente cambio.
+  }
+
   return (
     <main className="app">
       <div className="app-container">
         <Header />
-        <GeneratorPanel>
+        <GeneratorPanel onSubmit={handleGenerate}>
           <div className="selector-row">
             <TemplateSelector
               templates={templates}
@@ -48,13 +92,17 @@ function App() {
             <QuantitySelector
               numberRecords={numberRecords}
               onNumberRecordsChange={setNumberRecords}
+              hasError={hasAttemptedGenerate && Boolean(quantityError)}
             />
           </div>
           <FieldSelector
             fields={currentTemplate.fields}
             selectedFields={selectedFields}
             onFieldChange={handleFieldChange}
+            hasError={hasAttemptedGenerate && Boolean(fieldError)}
           />
+          <ValidationMessage errors={visibleErrors} />
+          <GenerateButton />
         </GeneratorPanel>
       </div>
     </main>

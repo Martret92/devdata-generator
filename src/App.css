@@ -95,6 +95,46 @@ input:focus-visible {
   font-weight: 400;
 }
 
+.validation-message {
+  margin-top: 24px;
+  padding: 14px 16px;
+  border-left: 4px solid #b42318;
+  border-radius: 4px;
+  color: #7a271a;
+  background: #fef3f2;
+}
+
+.validation-message p {
+  margin: 0;
+}
+
+.validation-message ul {
+  margin: 8px 0 0;
+  padding-left: 22px;
+}
+
+.generate-button {
+  min-height: 44px;
+  margin-top: 24px;
+  padding: 10px 24px;
+  border: 0;
+  border-radius: 6px;
+  color: #ffffff;
+  background: #1d4ed8;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.generate-button:hover {
+  background: #1e40af;
+}
+
+.generate-button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
+}
+
 @media (max-width: 560px) {
   .app {
     padding: 28px 16px;

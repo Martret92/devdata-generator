@@ -1,9 +1,14 @@
-function GeneratorPanel({ children }) {
+function GeneratorPanel({ children, onSubmit }) {
   return (
-    <section className="generator-panel" aria-labelledby="generator-title">
+    <form
+      className="generator-panel"
+      aria-labelledby="generator-title"
+      noValidate
+      onSubmit={onSubmit}
+    >
       <h2 id="generator-title">Configuración</h2>
       {children}
-    </section>
+    </form>
   )
 }
 

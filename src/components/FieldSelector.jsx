@@ -1,6 +1,10 @@
-function FieldSelector({ fields, selectedFields, onFieldChange }) {
+function FieldSelector({ fields, selectedFields, onFieldChange, hasError }) {
   return (
-    <fieldset className="field-selector">
+    <fieldset
+      className="field-selector"
+      aria-invalid={hasError}
+      aria-describedby={hasError ? 'validation-errors' : undefined}
+    >
       <legend>Campos incluidos</legend>
       <div className="field-grid">
         {fields.map((field) => {
