@@ -148,6 +148,35 @@ input:focus-visible {
   font-size: 1.25rem;
 }
 
+.view-selector {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.view-selector button {
+  min-height: 40px;
+  padding: 8px 16px;
+  border: 1px solid #9fb3c8;
+  border-radius: 6px;
+  color: #334e68;
+  background: #ffffff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.view-selector button[aria-pressed='true'] {
+  border-color: #1d4ed8;
+  color: #ffffff;
+  background: #1d4ed8;
+}
+
+.view-selector button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
+}
+
 .preview-table-container {
   max-width: 100%;
   margin-top: 20px;
@@ -176,6 +205,28 @@ input:focus-visible {
 
 .preview-table th {
   background: #f1f5f9;
+}
+
+.json-preview {
+  max-width: 100%;
+  margin-top: 20px;
+  overflow-x: auto;
+  border-radius: 6px;
+  background: #f1f5f9;
+}
+
+.json-preview:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+.json-preview pre {
+  width: max-content;
+  min-width: 100%;
+  margin: 0;
+  padding: 16px;
+  font: 0.9rem/1.5 ui-monospace, SFMono-Regular, Consolas, monospace;
+  white-space: pre;
 }
 
 .visually-hidden {
