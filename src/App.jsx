@@ -2,12 +2,14 @@ import { useState } from 'react'
 import './App.css'
 import FieldSelector from './components/FieldSelector'
 import GenerateButton from './components/GenerateButton'
+import GenerationResult from './components/GenerationResult'
 import GeneratorPanel from './components/GeneratorPanel'
 import Header from './components/Header'
 import QuantitySelector from './components/QuantitySelector'
 import TemplateSelector from './components/TemplateSelector'
 import ValidationMessage from './components/ValidationMessage'
 import { templates } from './data/templates'
+import { generateData } from './utils/generateData'
 
 function getConfigurationErrors(numberRecords, selectedFields) {
   let quantityError = ''
@@ -40,6 +42,7 @@ function App() {
   )
   const [numberRecords, setNumberRecords] = useState(10)
   const [hasAttemptedGenerate, setHasAttemptedGenerate] = useState(false)
+  const [generatedData, setGeneratedData] = useState([])
 
   const currentTemplate = templates.find(
     (template) => template.id === selectedTemplate,
@@ -50,6 +53,7 @@ function App() {
 
     setSelectedTemplate(templateId)
     setSelectedFields(newTemplate.fields.map((field) => field.id))
+    setGeneratedData([])
   }
 
   const handleFieldChange = (fieldId) => {
@@ -58,6 +62,12 @@ function App() {
         ? currentFields.filter((id) => id !== fieldId)
         : [...currentFields, fieldId],
     )
+    setGeneratedData([])
+  }
+
+  const handleNumberRecordsChange = (value) => {
+    setNumberRecords(value)
+    setGeneratedData([])
   }
 
   const { quantityError, fieldError, errors } = getConfigurationErrors(
@@ -75,7 +85,13 @@ function App() {
       return
     }
 
-    // La generación real se añadirá en el siguiente cambio.
+    setGeneratedData(
+      generateData({
+        templateId: selectedTemplate,
+        selectedFields,
+        numberRecords,
+      }),
+    )
   }
 
   return (
@@ -91,7 +107,7 @@ function App() {
             />
             <QuantitySelector
               numberRecords={numberRecords}
-              onNumberRecordsChange={setNumberRecords}
+              onNumberRecordsChange={handleNumberRecordsChange}
               hasError={hasAttemptedGenerate && Boolean(quantityError)}
             />
           </div>
@@ -104,6 +120,7 @@ function App() {
           <ValidationMessage errors={visibleErrors} />
           <GenerateButton />
         </GeneratorPanel>
+        <GenerationResult generatedData={generatedData} />
       </div>
     </main>
   )

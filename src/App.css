@@ -135,12 +135,48 @@ input:focus-visible {
   outline-offset: 2px;
 }
 
+.generation-result {
+  margin-top: 28px;
+  padding: 28px;
+  border: 1px solid #d9e2ec;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.generation-result h2,
+.generation-result h3 {
+  margin: 0;
+}
+
+.generation-result h2 {
+  font-size: 1.25rem;
+}
+
+.generation-result h3 {
+  margin-top: 20px;
+  font-size: 1rem;
+}
+
+.generation-result pre {
+  max-width: 100%;
+  margin: 12px 0 0;
+  padding: 16px;
+  overflow-x: auto;
+  border-radius: 6px;
+  background: #f1f5f9;
+  font: 0.9rem/1.5 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
 @media (max-width: 560px) {
   .app {
     padding: 28px 16px;
   }
 
   .generator-panel {
+    padding: 20px;
+  }
+
+  .generation-result {
     padding: 20px;
   }
 
