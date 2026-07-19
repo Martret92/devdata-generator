@@ -245,25 +245,25 @@ Estos estados son una guía de diseño y no representan una implementación exis
 
 Los detalles finales podrán adaptarse durante el desarrollo para evitar estado duplicado o innecesario.
 
-## 13. Paso 9: preguntas de análisis
+## 13. Preguntas de análisis
 
-El profesor propuso tres preguntas de análisis sin pedir código:
+Este apartado responde al paso 9 de la Entrega 1, que proponía utilizar preguntas de análisis sin solicitar código.
+
+Las tres preguntas utilizadas fueron:
 
 1. ¿Cómo organizarías una aplicación React para generar datos ficticios?
 2. ¿Qué componentes reutilizables crearías?
 3. ¿Qué estructura tendría?
 
-> No guardamos una respuesta independiente para cada pregunta. Las respuestas se fueron concretando durante la sesión y quedaron reflejadas en el wireframe, el árbol de componentes y las decisiones de estado.
+> No guardamos una respuesta independiente para cada pregunta. Las respuestas se fueron concretando durante la sesión y quedaron reflejadas en el análisis, el wireframe, el árbol de componentes y las decisiones de estado.
 
 Durante el análisis terminamos planteando:
 
-* una pantalla principal;
-* separación entre configuración, vista previa y exportación;
-* componentes reutilizables;
-* estado compartido gestionado inicialmente desde `App`;
-* arquitectura pequeña y progresiva.
-
-El Paso 9 no exigía guardar respuestas literales, mantener una respuesta separada por pregunta ni conservar todo el historial posterior de conversaciones con IA.
+- una pantalla principal;
+- separación entre configuración, vista previa y exportación;
+- componentes reutilizables;
+- estado compartido gestionado inicialmente desde `App`;
+- una arquitectura pequeña y progresiva.
 
 El registro completo se encuentra en:
 

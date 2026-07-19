@@ -1,41 +1,24 @@
 # NTEC ToolBox · DevData Generator
 
-Aplicación web desarrollada con React para generar conjuntos configurables de datos ficticios destinados a pruebas, aprendizaje, prototipos, bases de datos y aplicaciones.
+Aplicación web desarrollada con React para generar datos ficticios configurables destinados a pruebas, ejercicios, prototipos, bases de datos y aplicaciones.
 
-El proyecto forma parte de una práctica guiada de Desarrollo Web FullStack y se desarrolla de manera incremental a lo largo de cuatro sesiones.
+El proyecto forma parte de una práctica guiada de Desarrollo Web FullStack y se desarrolla de forma incremental a lo largo de cuatro sesiones.
 
-## Problema que resuelve
+## Objetivo
 
-Durante el desarrollo de una aplicación es habitual necesitar datos de ejemplo para probar:
+DevData Generator permite preparar conjuntos de datos ficticios sin tener que escribir manualmente cada registro.
 
-- listados;
+La aplicación está pensada principalmente para estudiantes y desarrolladores que necesiten datos para probar:
+
 - tablas;
 - formularios;
-- bases de datos;
+- componentes;
 - APIs;
-- componentes frontend;
+- bases de datos;
 - operaciones CRUD;
 - importaciones y exportaciones.
 
-Crear estos datos manualmente requiere tiempo, produce poca variedad y dificulta realizar pruebas con varios registros.
-
-DevData Generator pretende resolver este problema mediante una interfaz sencilla desde la que el usuario pueda seleccionar una plantilla, escoger los campos necesarios, indicar una cantidad y exportar los datos generados.
-
-## Usuarios previstos
-
-La aplicación está dirigida principalmente a:
-
-- estudiantes de programación;
-- desarrolladores frontend;
-- desarrolladores backend;
-- desarrolladores full-stack;
-- personas que necesiten datos ficticios para ejercicios, demostraciones o pruebas.
-
-La primera versión se orienta especialmente a usuarios que prefieran una herramienta visual y no quieran escribir manualmente código o estructuras de datos.
-
 ## Tecnologías
-
-### Tecnologías utilizadas
 
 - React
 - Vite
@@ -45,44 +28,24 @@ La primera versión se orienta especialmente a usuarios que prefieran una herram
 - Git
 - GitHub
 
-### Librerías previstas
+## Dependencias
 
-Se incorporarán cuando se desarrolle la funcionalidad que las necesita:
+### Utilizada
 
-- `@faker-js/faker`: generación de datos ficticios;
-- `papaparse`: conversión y exportación en CSV;
-- `file-saver`: descarga de archivos desde el navegador.
+- `@faker-js/faker`: generación de datos ficticios.
 
-Faker, PapaParse y FileSaver no se instalaron en la Sesión 1 porque todavía no eran necesarias. Por ahora no forman parte de la implementación.
+### Previstas o posibles para la Sesión 3
 
-## Funcionalidades principales
+- `papaparse`: posible apoyo para generar archivos CSV;
+- `file-saver`: posible apoyo para descargar archivos desde el navegador.
 
-El núcleo del generador deberá permitir:
+PapaParse y FileSaver no están instaladas actualmente. Su uso se decidirá al implementar las exportaciones.
 
-- seleccionar una plantilla;
-- indicar la cantidad de registros;
-- seleccionar los campos que se desean incluir;
-- generar datos ficticios;
-- mostrar una vista previa en tabla;
-- mostrar una vista previa en código;
-- exportar JSON;
-- exportar CSV;
-- generar SQL INSERT;
-- validar la configuración antes de generar o exportar;
+## Plantillas
 
-Estas funcionalidades están diseñadas, pero todavía no se han implementado. Responsive y accesibilidad son objetivos de la Sesión 3 y de la versión final.
-
-## Plantillas iniciales
-
-La primera versión utilizará tres plantillas:
-
-- Usuarios;
-- Alumnos;
-- Productos.
+La aplicación incluye tres plantillas:
 
 ### Usuarios
-
-Campos aprobados:
 
 - nombre;
 - apellidos;
@@ -94,8 +57,6 @@ Campos aprobados:
 - fecha de alta.
 
 ### Alumnos
-
-Campos recomendados para el MVP:
 
 - nombre;
 - apellidos;
@@ -109,8 +70,6 @@ Campos recomendados para el MVP:
 
 ### Productos
 
-Campos recomendados para el MVP:
-
 - ID;
 - nombre;
 - categoría;
@@ -118,65 +77,53 @@ Campos recomendados para el MVP:
 - stock;
 - activo.
 
-La definición detallada y las decisiones adoptadas pueden consultarse en [Sesión 1: análisis y diseño](docs/sesion-1-analisis-diseno.md).
+La definición y las decisiones iniciales se explican en [Sesión 1: análisis y diseño](docs/sesion-1-analisis-diseno.md).
+
+## Estado actual
+
+### Implementado
+
+Después de completar la Sesión 2, la aplicación permite:
+
+- seleccionar Usuarios, Alumnos o Productos;
+- indicar una cantidad entre 1 y 100 registros;
+- activar o desactivar campos;
+- validar cantidades y selección de campos;
+- generar datos ficticios con Faker;
+- generar mediante el botón o la tecla `Enter`;
+- mostrar todos los resultados en una tabla;
+- mostrar todos los resultados en formato JSON;
+- alternar entre las vistas Tabla y JSON;
+- limpiar los resultados al cambiar una opción de configuración;
+- utilizar la interfaz en distintos tamaños de pantalla;
+- navegar mediante teclado;
+- utilizar controles con foco visible.
+
+> **Vista JSON:** implementada.
+> **Exportación JSON descargable:** pendiente.
+
+### Pendiente
+
+La Sesión 3 se centrará principalmente en:
+
+- exportación JSON descargable;
+- exportación CSV;
+- generación de SQL INSERT;
+- descarga de archivos;
+- posible copia al portapapeles;
+- revisión final del diseño responsive;
+- revisión final de accesibilidad;
+- mejoras opcionales después de completar el alcance obligatorio.
 
 ## Formatos obligatorios
 
-La versión final deberá exportar los datos en:
+La versión final deberá permitir exportar:
 
 - JSON;
 - CSV;
 - SQL INSERT.
 
-## Estado actual
-
-### Implementado y validado
-
-Actualmente el repositorio contiene:
-
-- proyecto React creado con Vite;
-- JavaScript;
-- CSS;
-- configuración de ESLint;
-- pantalla mínima inicial;
-- repositorio Git inicializado;
-- repositorio público en GitHub;
-- rama principal `main`.
-
-Validaciones realizadas:
-
-- ejecución local correcta;
-- análisis de ESLint superado;
-- compilación de producción superada.
-
-### Diseñado, pero todavía no implementado
-
-Se han definido documentalmente:
-
-- problema y usuarios;
-- plantillas y campos;
-- wireframe;
-- árbol orientativo de componentes;
-- distribución inicial de estados;
-- flujo general de generación y exportación;
-- investigación de herramientas similares.
-
-### Todavía no implementado
-
-En el estado actual todavía no existen:
-
-- selector de plantillas;
-- selector de cantidad;
-- selector de campos;
-- integración con Faker;
-- generación de datos;
-- tabla de vista previa;
-- vista de código o JSON;
-- exportación JSON;
-- exportación CSV;
-- exportación SQL;
-- modo oscuro;
-- funcionalidades adicionales.
+Actualmente existe una vista JSON completa, pero todavía no se descarga como archivo.
 
 ## Instalación
 
@@ -194,7 +141,8 @@ Es necesario disponer de:
 git clone https://github.com/Martret92/devdata-generator.git
 cd devdata-generator
 ```
-### Instalar dependencias
+
+### Instalar las dependencias
 
 ```bash
 npm install
@@ -202,34 +150,37 @@ npm install
 
 ## Ejecución local
 
-Para iniciar el servidor de desarrollo:
-
 ```bash
 npm run dev
 ```
 
 Vite mostrará en la terminal la dirección local desde la que puede abrirse la aplicación.
 
-> En el estado actual se muestra únicamente la pantalla mínima inicial. El generador de datos todavía no está implementado.
+En Windows, si la configuración de PowerShell bloquea el comando `npm`, puede utilizarse:
+
+```powershell
+npm.cmd run dev
+```
 
 ## Scripts disponibles
 
-| Comando           | Descripción                                                   |
-| ----------------- | ------------------------------------------------------------- |
-| `npm run dev`     | Inicia el servidor de desarrollo de Vite                      |
-| `npm run build`   | Genera la compilación de producción                           |
-| `npm run lint`    | Ejecuta ESLint sobre el proyecto                              |
-| `npm run preview` | Permite previsualizar localmente la compilación de producción |
+| Comando           | Descripción                                          |
+| ----------------- | ---------------------------------------------------- |
+| `npm run dev`     | Inicia el servidor de desarrollo de Vite             |
+| `npm run build`   | Genera la compilación de producción                  |
+| `npm run lint`    | Ejecuta ESLint sobre el proyecto                     |
+| `npm run preview` | Previsualiza localmente la compilación de producción |
+
+Los mismos scripts pueden ejecutarse con `npm.cmd` cuando sea necesario en PowerShell.
 
 ## Documentación
-
-La evolución del proyecto se documenta dentro de la carpeta `docs/`.
 
 * [Sesión 1: análisis y diseño](docs/sesion-1-analisis-diseno.md)
 * [Investigación de herramientas similares](docs/investigacion-herramientas.md)
 * [Wireframe aprobado](docs/wireframe.md)
 * [Arquitectura orientativa de componentes](docs/componentes.md)
 * [Registro de prompts](docs/registro-prompts.md)
+* [Cierre de la Sesión 2](docs/sesion-2-cierre.md)
 
 ## Roadmap
 
@@ -237,52 +188,55 @@ La evolución del proyecto se documenta dentro de la carpeta `docs/`.
 
 **Estado: completada**
 
-Incluye:
+Incluyó:
 
 * investigación de herramientas similares;
-* definición del problema;
-* identificación de usuarios;
+* definición del problema y de los usuarios;
 * selección de plantillas y campos;
 * wireframe;
 * árbol inicial de componentes;
-* registro inicial de prompts;
-* creación del proyecto React con Vite;
+* estados previstos;
+* primeros prompts;
+* creación del proyecto con React y Vite;
 * configuración de Git y GitHub;
 * validación de lint, build y ejecución local.
 
 ### Sesión 2 — Desarrollo del núcleo
 
+**Estado: completada**
+
+Incluyó:
+
+* componentes principales;
+* selector de plantilla;
+* cantidad entre 1 y 100;
+* selector de campos;
+* validaciones;
+* integración de Faker;
+* generación de datos ficticios;
+* tabla completa;
+* vista JSON completa;
+* alternancia Tabla/JSON;
+* responsive inicial;
+* navegación mediante teclado y foco visible.
+
+### Sesión 3 — Exportación y revisión de interfaz
+
 **Estado: pendiente**
 
 Objetivos previstos:
 
-* componentes;
-* selector de plantillas;
-* selector de cantidad;
-* selector de campos;
-* Faker.js;
-* generación;
-* tabla;
-* JSON;
-* validaciones;
-* refactorización.
-
-### Sesión 3 — Exportación y diseño
-
-**Pendiente**
-
 * exportación JSON;
 * exportación CSV;
-* generación de SQL INSERT;
+* SQL INSERT;
 * descarga de archivos;
-* copiar al portapapeles;
-* mejora de la interfaz;
-* responsive;
-* modo oscuro;
-* accesibilidad;
-* refactorización.
+* posible copia al portapapeles;
+* revisión responsive;
+* revisión de accesibilidad;
+* mejoras de interfaz;
+* refactorización solo si resulta necesaria.
 
-### Sesión 4 — Revisión y entrega
+### Sesión 4 — Revisión y entrega final
 
 **Estado: pendiente**
 
@@ -291,43 +245,39 @@ Objetivos previstos:
 * búsqueda de errores;
 * optimización;
 * limpieza;
-* README;
-* pruebas;
-* documentación;
+* pruebas finales;
+* actualización de documentación;
+* capturas;
 * presentación;
 * versión definitiva.
 
-## Historial inicial
-
-Primer commit del proyecto:
-
-```text
-43e7d43 chore: initialize React and Vite project
-```
-
-Documentación de la Sesión 1:
-
-```text
-ab5e61b docs: document session 1 analysis and project roadmap
-```
-
 ## Uso de IA
 
-La IA se utilizó como apoyo para analizar requisitos, ordenar la documentación y revisar cambios. El trabajo con Codex se dividió en tareas pequeñas: primero se inspeccionó el repositorio, después se aplicaron cambios acotados, se revisó el diff y finalmente se ejecutaron las pruebas. Las decisiones del proyecto y la comprobación del resultado siguieron siendo responsabilidad del autor. El [registro de prompts](docs/registro-prompts.md) distingue entre texto literal, resúmenes fieles y resultados consolidados.
+La IA se utilizó como apoyo para organizar requisitos, preparar tareas y revisar documentación. Las decisiones, los cambios y las pruebas fueron revisados por el autor.
+
+El detalle de las preguntas de análisis y de otras consultas relevantes puede consultarse en el [registro de prompts](docs/registro-prompts.md).
 
 ## Contexto académico
 
-Proyecto realizado como práctica guiada de Desarrollo Web FullStack.
-
 * Proyecto: NTEC ToolBox · DevData Generator
+* Asignatura: Desarrollo Web FullStack
 * Profesor: Óscar Burgos
 * Autor: Jaime Martret
 * Fecha prevista de entrega final: 31 de julio de 2026
 
 ## Extras opcionales
 
-Fuera del calendario oficial quedan ideas como seed, relaciones, Excel, importación, API REST, estructuras anidadas, creación libre de plantillas, historial, edición avanzada y filtros avanzados. No están implementadas ni forman parte del núcleo.
+Fuera del núcleo obligatorio quedan ideas como:
 
-## Nota sobre el estado de la documentación
+* seed;
+* relaciones entre entidades;
+* Excel;
+* importación;
+* API REST;
+* estructuras anidadas;
+* creación libre de plantillas;
+* historial;
+* edición avanzada;
+* filtros.
 
-La documentación separa diseño, implementación y trabajo pendiente. Una funcionalidad solo se marcará como terminada después de implementarla y probarla.
+Estas ideas no están implementadas ni deben desplazar el alcance obligatorio.

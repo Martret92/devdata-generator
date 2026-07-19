@@ -78,7 +78,7 @@ Definir la relación entre configuración, vista previa y exportación.
 
 **Resultado**
 
-La estructura final quedó reflejada en este árbol:
+La propuesta inicial quedó reflejada en este árbol:
 
 ```text
 App
@@ -163,14 +163,8 @@ Se comprobaron:
 - build;
 - servidor local.
 
-## Forma de trabajo con Codex
+## Proceso de trabajo asistido
 
-Las tareas técnicas se preparan de forma pequeña y concreta:
-
-1. inspeccionar el repositorio;
-2. modificar solo lo necesario;
-3. revisar el diff;
-4. ejecutar pruebas;
-5. comprobar el estado de Git.
+Los cambios se dividieron en tareas pequeñas. Antes de modificar el repositorio se revisó su estado y, después, se comprobaron el diff, lint, build y el funcionamiento local.
 
 En Windows algunos comandos se ejecutaron con `npm.cmd` por la configuración de PowerShell.
