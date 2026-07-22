@@ -1,3 +1,5 @@
+import { serializeJson } from '../utils/exportJson'
+
 function JsonPreview({ generatedData }) {
   return (
     <div
@@ -6,7 +8,7 @@ function JsonPreview({ generatedData }) {
       aria-label="Vista JSON de los datos generados"
       tabIndex="0"
     >
-      <pre>{JSON.stringify(generatedData, null, 2)}</pre>
+      <pre>{serializeJson(generatedData)}</pre>
     </div>
   )
 }

@@ -1,8 +1,9 @@
 import { useState } from 'react'
+import ExportPanel from './ExportPanel'
 import JsonPreview from './JsonPreview'
 import PreviewTable from './PreviewTable'
 
-function GenerationResult({ generatedData, columns }) {
+function GenerationResult({ generatedData, columns, templateId }) {
   const [activeView, setActiveView] = useState('table')
 
   if (generatedData.length === 0) {
@@ -35,6 +36,7 @@ function GenerationResult({ generatedData, columns }) {
       ) : (
         <JsonPreview generatedData={generatedData} />
       )}
+      <ExportPanel generatedData={generatedData} templateId={templateId} />
     </section>
   )
 }

@@ -126,6 +126,7 @@ function App() {
         <GenerationResult
           generatedData={generatedData}
           columns={previewColumns}
+          templateId={selectedTemplate}
         />
       </div>
     </main>
