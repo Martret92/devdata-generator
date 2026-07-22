@@ -1,21 +1,34 @@
+import { downloadCsv } from '../utils/exportCsv'
 import { downloadJson } from '../utils/exportJson'
 
-function ExportPanel({ generatedData, templateId }) {
-  const filename = `devdata-${templateId}.json`
+function ExportPanel({ generatedData, columns, templateId }) {
+  const jsonFilename = `devdata-${templateId}.json`
+  const csvFilename = `devdata-${templateId}.csv`
 
   return (
     <section className="export-panel" aria-labelledby="export-title">
       <div>
         <h3 id="export-title">Exportar datos</h3>
-        <p>Descarga todos los registros generados en formato JSON.</p>
+        <p>
+          Descarga todos los registros generados en el formato que necesites.
+        </p>
       </div>
-      <button
-        className="download-button"
-        type="button"
-        onClick={() => downloadJson(generatedData, filename)}
-      >
-        Descargar JSON
-      </button>
+      <div className="export-actions">
+        <button
+          className="download-button"
+          type="button"
+          onClick={() => downloadJson(generatedData, jsonFilename)}
+        >
+          Descargar JSON
+        </button>
+        <button
+          className="download-button"
+          type="button"
+          onClick={() => downloadCsv(generatedData, columns, csvFilename)}
+        >
+          Descargar CSV
+        </button>
+      </div>
     </section>
   )
 }

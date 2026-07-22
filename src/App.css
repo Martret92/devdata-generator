@@ -249,6 +249,12 @@ input:focus-visible {
   color: #52606d;
 }
 
+.export-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 10px;
+}
+
 .download-button {
   flex: 0 0 auto;
   min-height: 44px;
@@ -306,6 +312,11 @@ input:focus-visible {
   }
 
   .download-button {
+    width: 100%;
+  }
+
+  .export-actions {
+    flex-direction: column;
     width: 100%;
   }
 }

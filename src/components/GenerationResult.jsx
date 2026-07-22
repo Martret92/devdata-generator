@@ -36,7 +36,11 @@ function GenerationResult({ generatedData, columns, templateId }) {
       ) : (
         <JsonPreview generatedData={generatedData} />
       )}
-      <ExportPanel generatedData={generatedData} templateId={templateId} />
+      <ExportPanel
+        generatedData={generatedData}
+        columns={columns}
+        templateId={templateId}
+      />
     </section>
   )
 }
