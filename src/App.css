@@ -148,6 +148,16 @@ input:focus-visible {
   font-size: 1.25rem;
 }
 
+.generation-result--empty {
+  text-align: center;
+}
+
+.generation-result--empty p {
+  max-width: 560px;
+  margin: 10px auto 0;
+  color: #52606d;
+}
+
 .view-selector {
   display: flex;
   gap: 8px;

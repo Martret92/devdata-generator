@@ -7,7 +7,18 @@ function GenerationResult({ generatedData, columns, templateId }) {
   const [activeView, setActiveView] = useState('table')
 
   if (generatedData.length === 0) {
-    return null
+    return (
+      <section
+        className="generation-result generation-result--empty"
+        aria-labelledby="empty-result-title"
+      >
+        <h2 id="empty-result-title">Aún no hay datos generados</h2>
+        <p>
+          Configura la plantilla, la cantidad y los campos, y pulsa Generar para
+          ver los resultados.
+        </p>
+      </section>
+    )
   }
 
   return (
