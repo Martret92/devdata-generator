@@ -231,6 +231,7 @@ input:focus-visible {
 
 .export-panel {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
@@ -277,6 +278,19 @@ input:focus-visible {
 .download-button:focus-visible {
   outline: 3px solid #93c5fd;
   outline-offset: 2px;
+}
+
+.export-panel .copy-feedback {
+  flex-basis: 100%;
+  margin: 0;
+}
+
+.export-panel .copy-feedback--success {
+  color: #166534;
+}
+
+.export-panel .copy-feedback--error {
+  color: #b42318;
 }
 
 .visually-hidden {
