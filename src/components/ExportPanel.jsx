@@ -1,9 +1,11 @@
 import { downloadCsv } from '../utils/exportCsv'
 import { downloadJson } from '../utils/exportJson'
+import { downloadSql } from '../utils/exportSql'
 
 function ExportPanel({ generatedData, columns, templateId }) {
   const jsonFilename = `devdata-${templateId}.json`
   const csvFilename = `devdata-${templateId}.csv`
+  const sqlFilename = `devdata-${templateId}.sql`
 
   return (
     <section className="export-panel" aria-labelledby="export-title">
@@ -27,6 +29,15 @@ function ExportPanel({ generatedData, columns, templateId }) {
           onClick={() => downloadCsv(generatedData, columns, csvFilename)}
         >
           Descargar CSV
+        </button>
+        <button
+          className="download-button"
+          type="button"
+          onClick={() =>
+            downloadSql(generatedData, columns, templateId, sqlFilename)
+          }
+        >
+          Descargar SQL
         </button>
       </div>
     </section>
