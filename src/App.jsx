@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import FieldSelector from './components/FieldSelector'
 import GenerateButton from './components/GenerateButton'
@@ -10,6 +10,28 @@ import TemplateSelector from './components/TemplateSelector'
 import ValidationMessage from './components/ValidationMessage'
 import { templates } from './data/templates'
 import { generateData } from './utils/generateData'
+
+const THEME_STORAGE_KEY = 'devdata-theme'
+
+function getInitialTheme() {
+  try {
+    const storedTheme = localStorage.getItem(THEME_STORAGE_KEY)
+
+    if (storedTheme === 'light' || storedTheme === 'dark') {
+      return storedTheme
+    }
+  } catch {
+    // Continúa con la preferencia del sistema.
+  }
+
+  try {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light'
+  } catch {
+    return 'light'
+  }
+}
 
 function getConfigurationErrors(numberRecords, selectedFields) {
   let quantityError = ''
@@ -36,6 +58,7 @@ function getConfigurationErrors(numberRecords, selectedFields) {
 
 function App() {
   const initialTemplate = templates[0]
+  const [theme, setTheme] = useState(getInitialTheme)
   const [selectedTemplate, setSelectedTemplate] = useState(initialTemplate.id)
   const [selectedFields, setSelectedFields] = useState(
     initialTemplate.fields.map((field) => field.id),
@@ -44,6 +67,16 @@ function App() {
   const [hasAttemptedGenerate, setHasAttemptedGenerate] = useState(false)
   const [generatedData, setGeneratedData] = useState([])
   const [generationVersion, setGenerationVersion] = useState(0)
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, theme)
+    } catch {
+      // El tema sigue funcionando durante la sesión.
+    }
+  }, [theme])
 
   const currentTemplate = templates.find(
     (template) => template.id === selectedTemplate,
@@ -74,6 +107,12 @@ function App() {
     setGeneratedData([])
   }
 
+  const handleToggleTheme = () => {
+    setTheme((currentTheme) =>
+      currentTheme === 'dark' ? 'light' : 'dark',
+    )
+  }
+
   const { quantityError, fieldError, errors } = getConfigurationErrors(
     numberRecords,
     selectedFields,
@@ -102,7 +141,7 @@ function App() {
   return (
     <main className="app">
       <div className="app-container">
-        <Header />
+        <Header theme={theme} onToggleTheme={handleToggleTheme} />
         <GeneratorPanel onSubmit={handleGenerate}>
           <div className="selector-row">
             <TemplateSelector
