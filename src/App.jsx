@@ -43,6 +43,7 @@ function App() {
   const [numberRecords, setNumberRecords] = useState(10)
   const [hasAttemptedGenerate, setHasAttemptedGenerate] = useState(false)
   const [generatedData, setGeneratedData] = useState([])
+  const [generationVersion, setGenerationVersion] = useState(0)
 
   const currentTemplate = templates.find(
     (template) => template.id === selectedTemplate,
@@ -88,13 +89,14 @@ function App() {
       return
     }
 
-    setGeneratedData(
-      generateData({
-        templateId: selectedTemplate,
-        selectedFields,
-        numberRecords,
-      }),
-    )
+    const newGeneratedData = generateData({
+      templateId: selectedTemplate,
+      selectedFields,
+      numberRecords,
+    })
+
+    setGeneratedData(newGeneratedData)
+    setGenerationVersion((currentVersion) => currentVersion + 1)
   }
 
   return (
@@ -124,6 +126,7 @@ function App() {
           <GenerateButton />
         </GeneratorPanel>
         <GenerationResult
+          key={generationVersion}
           generatedData={generatedData}
           columns={previewColumns}
           templateId={selectedTemplate}
